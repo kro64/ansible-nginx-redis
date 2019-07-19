@@ -29,13 +29,15 @@ To launch the playbook, from the root directory, launch like this:
 This is an example of usage using curl. Let's say we want to manipulate our user-agent header, providing a custom value to the server.
 
 
-Example requst:
+Example query:
 
 **curl -H "User-Agent: This is my agent." 127.0.0.1**
 
 
 
-Example agent count check. Check listed keys:
+Example agent count check:
+
+Check listed keys:
 
 [karbir@ nicepc]# _redis-cli_
 127.0.0.1:6379> _KEYS *_
@@ -43,8 +45,14 @@ Example agent count check. Check listed keys:
 2) "This is my agent."
 3) "hasta"
 
-Check key count:
+Check user-agent key count on Redis:
 
 127.0.0.1:6379> _GET "This is my agent."_
 "1"
 
+
+*Tip: You can also set values into Redis by visit the configured nginx webserver.
+
+In this case:
+
+http://127.0.0.1 
