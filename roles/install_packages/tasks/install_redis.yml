@@ -1,0 +1,12 @@
+---
+- name: Install redis package for CentOS
+  yum:
+    name: "redis"
+    state: present
+  when: ansible_distribution == 'CentOS'
+
+- name: Enable redis service after reboot
+  service:
+    name: "redis"
+    state: restarted
+    enabled: yes

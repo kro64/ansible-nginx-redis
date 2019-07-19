@@ -1,0 +1,16 @@
+---
+- name: Install Syslog-ng application
+  yum:
+    name: syslog-ng
+    state: present
+
+- name: Install Syslog-ng-redis
+  yum:
+    name: ["syslog-ng-redis,syslog-ng-redis"]
+    state: present
+
+- name: Enable syslog-ng service after reboot
+  service:
+    name: "syslog-ng"
+    state: started
+    enabled: yes

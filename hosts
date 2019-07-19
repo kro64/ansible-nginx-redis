@@ -1,0 +1,6 @@
+[linux:children]
+linux_centos
+
+[linux_centos]
+127.0.0.1
+

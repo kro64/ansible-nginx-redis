@@ -1,0 +1,11 @@
+---
+- name: Install Nginx application
+  yum:
+    name: nginx
+    state: present
+
+- name: Enable nginx service after reboot
+  service:
+    name: "nginx"
+    state: started
+    enabled: yes

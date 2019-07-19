@@ -1,0 +1,36 @@
+---
+#After executing the command below, syslog-ng was able to connect to Redis on 6379/tcp.
+##However, everthing seemed fine until redis service was restarted. Due to selinux unrelation
+##with our goal, we will use 'setenforce 0' for now.
+##
+##- name: Allow syslogd daemon to connect to 6379/tcp on Selinux
+##  command: semanage port -m -t syslogd_port_t -p tcp 6379
+
+- name: Apply 'setenforce 0' for nginx-syslog_ng-redis system demonstration purposes
+  command: setenforce 0
+
+- name: Load the Nginx configuration file nginx.conf
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Reload Nginx service
+  service:
+    name: nginx
+    state: reloaded
+
+- name: Load the Syslog-ng configuration file capture-agent.conf
+  template:
+    src: capture_agent.conf
+    dest: /etc/syslog-ng/conf.d/capture_agent.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Restart Syslog-ng service
+  service:
+    name: syslog-ng
+    state: restarted
