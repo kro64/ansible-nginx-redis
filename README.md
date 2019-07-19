@@ -51,7 +51,7 @@ Check user-agent key count on Redis:
 "1"
 
 
-*Tip: You can also set values into Redis by visit the configured nginx webserver.
+*Tip: You can also set values into Redis by visiting the configured nginx webserver.
 
 In this case:
 
